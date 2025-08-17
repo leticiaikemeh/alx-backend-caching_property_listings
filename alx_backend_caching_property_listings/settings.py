@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_redis",            # <-- required for Redis backend
     "properties",
+    "properties.apps.PropertiesConfig",
 ]
 
 MIDDLEWARE = [

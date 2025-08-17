@@ -7,5 +7,4 @@ class PropertiesConfig(AppConfig):
     name = "properties"
 
     def ready(self):
-        # Import signal handlers so they register on app load
-        from . import signals  # noqa: F401
+        import properties.signals
