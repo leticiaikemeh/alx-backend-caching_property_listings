@@ -15,10 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from properties.views import slow_property_count
+from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("health/cache/", slow_property_count),
+    path("", include("properties.urls")),  # <-- adds /properties/
 ]
