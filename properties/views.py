@@ -15,7 +15,7 @@ def property_list(request):
             "id": p.id,
             "title": p.title,
             "description": p.description,
-            "price": str(p.price),                   # Decimal -> JSON-safe
+            "price": str(p.price),                  # Decimal -> string
             "location": p.location,
             "created_at": p.created_at.isoformat(),  # datetime -> ISO 8601
         }
@@ -23,4 +23,7 @@ def property_list(request):
     ]
 
     data = {"properties": properties}
-    return JsonResponse(data)
+
+    return JsonResponse({
+        "properties": properties
+    })
