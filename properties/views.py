@@ -1,3 +1,4 @@
+# properties/views.py
 from django.http import JsonResponse
 from django.views.decorators.cache import cache_page
 from .models import Property
@@ -14,12 +15,12 @@ def property_list(request):
             "id": p.id,
             "title": p.title,
             "description": p.description,
-            # Decimal -> string for JSON
-            "price": str(p.price),
+            "price": str(p.price),                   # Decimal -> JSON-safe
             "location": p.location,
             "created_at": p.created_at.isoformat(),  # datetime -> ISO 8601
         }
         for p in qs
     ]
 
-    return JsonResponse({"properties": properties})
+    data = {"properties": properties}
+    return JsonResponse(data)
